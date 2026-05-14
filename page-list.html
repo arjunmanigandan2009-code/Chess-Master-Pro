@@ -1,0 +1,37 @@
+<span x-data="info">
+    <ion-header>
+        <ion-toolbar>
+            <ion-buttons slot="start">
+                <ion-menu-button></ion-menu-button>
+            </ion-buttons>
+            <ion-title class="ion-text-center" x-text="title"></ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content class="list-content">
+        <div class="list-container">
+            <div class="list-header">
+                <ion-button aria-label="Previous category" fill="clear" x-bind:disabled="!showNavPrev" x-on:click="showPrevious()">
+                    <ion-icon slot="icon-only" class="aura" data-name="arrow-back"></ion-icon>
+                </ion-button>
+                <div class="list-title">
+                    <template x-for="imageUrl in subcategory.imageUrls">
+                        <img x-bind:src="imageUrl" alt="ariaDescriptionFromIcon(imageUrl)" class="responsive-thumbnail aura" />
+                    </template>
+                </div>
+                <ion-button aria-label="Next category" fill="clear" x-bind:disabled="!showNavNext" x-on:click="showNext()">
+                    <ion-icon slot="icon-only" class="aura" data-name="arrow-forward"></ion-icon>
+                </ion-button>
+            </div>
+            <div class="position-grid">
+                <template x-for="(game, gidx) in subcategory.games" :key="gidx">
+                    <a class="position-btn"
+                        x-bind:class="!game?.record ? ( game?.target == 'draw' ? 'draw' : 'unsolved' ) : game?.record < 0 ? 'failed' : 'solved'"
+                        x-bind:href="'position/' + idxCategory + '/' + idxSubcategory + '/' + gidx"
+                        data-navigo
+                        x-text="gidx + 1">
+                    </a>
+                </template>
+            </div>
+        </div>
+    </ion-content>
+</span>

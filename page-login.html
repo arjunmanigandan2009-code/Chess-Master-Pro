@@ -1,0 +1,20 @@
+<span x-data="auth">
+    <ion-content>
+        <div class="auth-page">
+            <div class="auth-container">
+                <div class="auth-logo">
+                    <div class="auth-icon">♚</div>
+                    <h1>Chess Master Pro</h1>
+                    <p>Enter your name to start</p>
+                </div>
+                <div class="auth-card">
+                    <div class="auth-field">
+                        <input type="text" placeholder="Your Name" x-model="name" x-on:keydown.enter="submit()" autocomplete="off">
+                    </div>
+                    <div class="auth-error" x-text="error" x-show="error"></div>
+                    <button class="auth-btn" x-on:click="submit()">Start Playing</button>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</span>
